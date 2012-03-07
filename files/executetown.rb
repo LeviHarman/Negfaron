@@ -68,6 +68,17 @@ loop do
             end
       end
     when 'inn'
+      puts "As you enter the inn the innkeeper gives a quick look at your dirty clothes."
+      puts "If you wanna rest it will be #{inn.price} gold, accept or leave!"
+        answer = gets.chomp
+        if answer == 'yes' then
+          if hero.gold => inn.price
+            hero.gold -= inn.price
+            puts "Enjoy your stay."
+            hero.hp == hero.maxhp
+          else
+            puts "You don't have enough money."
+          end      
     when 'leave'
       puts "You wave goodbye to the villagers and once again enter the wilds."
       return(hero)
