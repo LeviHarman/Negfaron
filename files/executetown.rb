@@ -72,7 +72,7 @@ loop do
       puts "If you wanna rest it will be #{inn.price} gold, accept or leave!"
         answer = gets.chomp
         if answer == 'yes' then
-          if hero.gold => inn.price
+          if hero.gold >= inn.price
             hero.gold -= inn.price
             puts "Enjoy your stay."
             hero.hp == hero.maxhp
