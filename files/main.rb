@@ -13,7 +13,6 @@ require './dierolls.rb'
 require './ascii_banner.rb'
 require './executetown.rb'
 require './wander.rb'
-require './raceselection.rb'
 require './useractions.rb'
 
 ascii_banner

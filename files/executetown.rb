@@ -9,8 +9,8 @@ loop do
       puts "Fine sword, Sword, Rusty sword, Mace"
       weaponpurchase = gets.chomp
       weaponpurchase.downcase
-      case weaponpurchase
       
+      case weaponpurchase
         when 'fine sword'
           fine_sword = Weapon.new('fine sword', 'd8', 1, 250)
           puts "That will be #{fine_sword.price} gold. Do you still want to buy it? yes/no"
@@ -24,7 +24,6 @@ loop do
                 puts "You don't have enough money."
               end
             end
-            
         when 'sword'
           sword = Weapon.new('sword', 'd6', 1, 63)
           puts "That will be #{sword.price} gold. Do you still want to buy it? yes/no"
@@ -38,7 +37,6 @@ loop do
                 puts "You don't have enough money."
               end
             end
-          
         when 'rusty sword'
           rusty_sword = Weapon.new('rusty sword', 'd5', 1, 25)
           puts "That will be #{rusty_sword.price} gold. Do you still want to buy it? yes/no"
@@ -52,7 +50,6 @@ loop do
                 puts "You don't have enough money."
               end
             end
-          
         when 'mace'
           mace = Weapon.new('mace', 'd4', 1, 10)
           puts "That will be #{mace.price} gold. Do you still want to buy it? yes/no"
@@ -68,6 +65,18 @@ loop do
             end
       end
     when 'inn'
+      puts "As you enter the inn the innkeeper gives a quick look at your dirty clothes."
+      puts "If you wanna rest it will be 10 gold, accept or leave! yes/no"
+        answer = gets.chomp
+        if answer == 'yes' then
+          if hero.gold >= 10
+            hero.gold -= 10
+            puts "Enjoy your stay."
+            hero.hp == hero.maxhp
+          else
+            puts "You don't have enough money."
+          end
+        end
     when 'leave'
       puts "You wave goodbye to the villagers and once again enter the wilds."
       return(hero)

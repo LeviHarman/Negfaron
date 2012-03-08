@@ -16,7 +16,7 @@ def useractions(hero)
     when 'wander'
       wander(hero)
     when 'help'
-      puts "COMMANDS - help, walk, end, wander, heal"
+      puts "COMMANDS - help, walk, town, end, wander, heal"
   end
   return(hero)
 end
