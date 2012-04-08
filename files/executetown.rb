@@ -1,3 +1,5 @@
+require './gambler.rb'
+
 def gototown(hero)
 loop do
   puts "You enter the town. Where would you like to go?"
@@ -77,6 +79,8 @@ loop do
             puts "You don't have enough money."
           end
         end
+    when 'gamble'
+      gambler
     when 'leave'
       puts "You wave goodbye to the villagers and once again enter the wilds."
       return(hero)
