@@ -8,7 +8,8 @@ def gambler
     gets.chomp
     puts "How much would you like to bet?"
     bet = gets.chomp
-    if hero.gold > bet
-      hero.gold -= bet
-    end
+      if hero.gold > bet
+        hero.gold -= bet
+      end
+  end
 end

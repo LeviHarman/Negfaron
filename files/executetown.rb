@@ -1,5 +1,3 @@
-require './gambler.rb'
-
 def gototown(hero)
 loop do
   puts "You enter the town. Where would you like to go?"
