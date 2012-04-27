@@ -10,7 +10,7 @@ class Hero < Creature
   end
   
   def newstatroll
-    statroll = Array.new(4){d6} #rolls 4 virtual d6.
+    statroll = Array.new(4){die(6)} #rolls 4 virtual d6.
     statrolls = statroll[0]+statroll[1]+statroll[2]+statroll[3]-statroll.min #adds the three highest rolls and it equals the str etc. Repeated for all 6 stats.
     return statrolls
   end
@@ -18,17 +18,17 @@ class Hero < Creature
   def herodamage
     case @weapon.hitdie
       when 'd2'
-        hitdieroll = d2
+        hitdieroll = die(2)
       when 'd3'
-        hitdieroll = d3
+        hitdieroll = die(3)
       when 'd4'
-        hitdieroll = d4
+        hitdieroll = die(4)
       when 'd5'
-        hitdieroll = d5
+        hitdieroll = die(5)
       when 'd6'
-        hitdieroll = d6
+        hitdieroll = die(6)
       when 'd8'
-        hitdieroll = d8
+        hitdieroll = die(8)
     end
     totaldamage = @str_modifier + hitdieroll
     return totaldamage
@@ -65,7 +65,7 @@ class Hero < Creature
   end
   
   def levelhero
-    addedhp = d10 + @con_modifier
+    addedhp = die(10) + @con_modifier
     @maxhp +=  addedhp
   end
   
@@ -125,14 +125,14 @@ class Hero < Creature
     end
   end
   def pickarace
-  while @creaturetype == 1
-    puts "Which race would you like to choose?"
-    puts "Human - No bonus or penalty. The well rounded race."
-    puts "Dwarf - Bonus Constitution, and Penalty to Charisma. Short sturdy Dwarves are tough but they are hard to get along with."
-    puts "Elf - Bonus Dexterity, and penalty to Constitution. The frail woodland elves prefer the bow."
-    raceselection = gets.chomp
-    race(raceselection.downcase)
-    getstatmodifier
-  end
+    while @creaturetype == 1
+      puts "Which race would you like to choose?"
+      puts "Human - No bonus or penalty. The well rounded race."
+      puts "Dwarf - Bonus Constitution, and Penalty to Charisma. Short sturdy Dwarves are tough but they are hard to get along with."
+      puts "Elf - Bonus Dexterity, and penalty to Constitution. The frail woodland elves prefer the bow."
+      raceselection = gets.chomp
+      race(raceselection.downcase)
+      getstatmodifier
+    end
   end
 end

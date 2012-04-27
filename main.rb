@@ -9,7 +9,7 @@
 require './creature.rb'
 require './hero.rb'
 require './weapon.rb'
-require './dierolls.rb'
+require './MyMath.rb'
 require './ascii_banner.rb'
 require './executetown.rb'
 require './wander.rb'
