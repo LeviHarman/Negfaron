@@ -105,7 +105,7 @@ def generatekobold(kobold)
   kobold.inte_modifier = 2
   kobold.wis_modifier = 2
   kobold.cha_modifier = 2
-  kobold.damagedie = (d4) +1
+  kobold.damagedie = (die(4)) +1
   return kobold
 end
 
@@ -127,7 +127,7 @@ def generatesnake(snake)
   snake.inte_modifier = 2
   snake.wis_modifier = 2
   snake.cha_modifier = 2
-  snake.damagedie = d4 
+  snake.damagedie = die(4)
   return snake
 end
 
@@ -149,7 +149,7 @@ def generaterabbit(rabbit)
   rabbit.inte_modifier = 2
   rabbit.wis_modifier = 2
   rabbit.cha_modifier = 2
-  rabbit.damagedie = d2
+  rabbit.damagedie = die(2)
   return rabbit
 end
 
@@ -171,7 +171,7 @@ def generaterat(rat)
   rat.inte_modifier = 2
   rat.wis_modifier = 2
   rat.cha_modifier = 2
-  rat.damagedie = d3
+  rat.damagedie = die(2)
   return rat
 end
 
@@ -193,6 +193,6 @@ def generatefrog(frog)
   frog.inte_modifier = 2
   frog.wis_modifier = 2
   frog.cha_modifier = 2
-  frog.damagedie = d3
+  frog.damagedie = die(3)
   return frog
 end
