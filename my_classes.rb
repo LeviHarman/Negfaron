@@ -46,7 +46,7 @@ class Monster < Creature
 end
 
 class Hero < Creature
-  attr_accessor :weapon, :gold, :experience, :level, :hp, :exp_to_next_level, :exp_this_level
+  attr_accessor :weapon, :gold, :experience, :level, :hp, :exp_to_next_level, :exp_this_level, :str, :dex, :con, :inte, :wis, :cha
   
   def initialize(name, creaturetype, maxhp, hp, damagedie, str, dex, con, inte, wis, cha, level,  weapon, gold, experience, exp_this_level, exp_to_next_level)
     super(name, creaturetype, maxhp, hp, damagedie)
@@ -77,6 +77,11 @@ class Hero < Creature
     return statrolls
   end
   
+  def modifier(base_stat) #Dungeons and Dragons type modifier system
+    base_stat = (base_stat / 2) - 5
+    return base_stat
+  end
+  
   def herodamage
     case @weapon.hitdie
       when 'd2'
@@ -96,23 +101,6 @@ class Hero < Creature
     return totaldamage
   end
   
-  def race( aRace )
-    case aRace
-      when 'human'
-        @creaturetype = "human"
-      when 'dwarf'
-        @creaturetype = "dwarf"
-        @con += 2
-        @cha -= 2
-      when 'elf'
-        @creaturetype = "elf"
-        @con -= 2
-        @dex += 2
-      else
-        puts "Please enter a valid Race."
-    end
-  end
-  
   def levelhero
     @exp_this_level = 0
     @exp_to_next_level = (@exp_to_next_level * 1.33)
@@ -121,58 +109,7 @@ class Hero < Creature
     @maxhp +=  addedhp
   end
   
-  def namehero
-    loop do
-      puts "What is thy name?"
-      @name = gets.chomp
-      
-      puts "Is #{@name} the correct name? yes/no"
-      correct = gets.chomp
-      if correct == 'yes'
-        puts "Welcome #{@name}, to the land of Negfaron"
-        gets.chomp
-        break
-      end
-    end
-  end
-  
-  def modifier(base_stat)
-    base_stat = (base_stat / 2) - 5
-    return base_stat
-  end
-  
   def rollforherostats
-  rollagain = 0
-    while rollagain == 0
-      @str = newstatroll
-      @dex = newstatroll
-      @con = newstatroll
-      @inte = newstatroll
-      @wis = newstatroll
-      @cha = newstatroll
-      show_stat_rolls #prints the rolls and the modifiers to screen
-      
-      reroll = gets.chomp
-      case reroll
-        when 'yes' #reroll
-          rollagain = 0
-        when 'no' #keep current rolls
-          @hp = 10 + modifier(@con)
-          @maxhp = 10 + modifier(@con)
-          puts "Your hp is #{@maxhp}"
-          rollagain = 1
-      end
-    end
-  end
-  
-  def pickarace
-    while @creaturetype == 1
-      puts "Which race would you like to choose?"
-      puts "Human - No bonus or penalty. The well rounded race."
-      puts "Dwarf - Bonus Constitution, and Penalty to Charisma. Short sturdy Dwarves are tough but they are hard to get along with."
-      puts "Elf - Bonus Dexterity, and penalty to Constitution. The frail woodland elves prefer the bow."
-      raceselection = gets.chomp
-      race(raceselection.downcase)
-    end
+
   end
 end
