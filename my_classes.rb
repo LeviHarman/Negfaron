@@ -113,10 +113,6 @@ class Hero < Creature
     end
   end
   
-  def set_name( aName )
-    @name = aName
-  end
-  
   def levelhero
     @exp_this_level = 0
     @exp_to_next_level = (@exp_to_next_level * 1.33)
