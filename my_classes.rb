@@ -1,3 +1,50 @@
+class Weapon
+  attr_reader :name, :hitdie, :number_rolls, :price
+  def initialize(name, hitdie, number_rolls, price)
+    @name = name
+    @hitdie = hitdie
+    @number_rolls = number_rolls
+    @price = price
+  end
+end
+
+class Creature
+  attr_accessor :name, :creaturetype, :hp, :maxhp, :damagedie
+  
+  def initialize(name, creaturetype, maxhp, hp, damagedie)
+    @name = name
+    @creaturetype = creaturetype
+    @hp = hp
+    @damagedie = damagedie
+  end
+  
+  def alive?
+    @hp > 0 #checks if creature is alive.
+  end
+  
+  def damagecalculator
+    damage = @damagedie
+    return damage
+  end
+  
+  def rename(newname)
+    @name = newname #method to change name of a creature.
+  end
+  
+  def new_creaturetype(newtype)
+    @creaturetype = newtype
+  end
+end
+
+class Monster < Creature
+  attr_accessor :xpv, :name, :creaturetype, :hp, :maxhp, :damagedie
+  
+  def initialize(name, creaturetype, maxhp, hp, damagedie, xpv)
+     super(name, creaturetype, maxhp, hp, damagedie)
+    @xpv = xpv # experience value
+  end
+end
+
 class Hero < Creature
   attr_accessor :weapon, :gold, :experience, :level, :hp, :exp_to_next_level, :exp_this_level
   
@@ -15,10 +62,6 @@ class Hero < Creature
     @experience = experience
     @exp_to_next_level = exp_to_next_level
     @exp_this_level = exp_this_level
-  end
-  
-  def alive?
-    @hp > 0
   end
   
   def heal
@@ -120,8 +163,6 @@ class Hero < Creature
       return +4
     elsif base_stat == 20
         return +5
-    else
-      print "modifier error"
     end
   end
   
@@ -134,24 +175,8 @@ class Hero < Creature
       @inte = newstatroll
       @wis = newstatroll
       @cha = newstatroll
+      show_stat_rolls #prints the rolls and the modifiers to screen
       
-      puts "Your stats are:"
-      puts "Strength = #{@str} - Important for physical damage, and melee accuracy."
-      puts "Dexterity = #{@dex} - Important for ranged accuracy, and armor class."
-      puts "Constitution = #{@con} - Important for hit points, and poison saves."
-      puts "Intelligence = #{@inte} - Important for magic."
-      puts "Wisdom = #{@wis} - Important for healing."
-      puts "Charisma = #{@cha} - Important for prices and dealing with people."
-      puts 
-      puts "Your modifiers are:"
-      puts "Strength modifier = #{modifier(@str)} - Modifies damage"
-      puts "Dexterity modifier = #{modifier(@dex)} - Modifies ranged accuracy"
-      puts "Constitution modifier = #{modifier(@con)} - Modifies hit points"
-      puts "Intelligence modifier = #{modifier(@inte)} - Modifies mana and number of spells"
-      puts "Wisdom modifier = #{modifier(@wis)} - Modifies healing"
-      puts "Charisma modifier = #{modifier(@cha)} - Modifies social things."
-      print
-      puts "Would you like to roll again?"
       reroll = gets.chomp
       case reroll
         when 'yes' #reroll

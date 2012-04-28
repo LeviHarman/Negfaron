@@ -1,9 +1,10 @@
-def gototown1(hero)
+def gototown(hero)
 
   fine_sword = Weapon.new('fine sword', 'd8', 1, 250)
   sword = Weapon.new('sword', 'd6', 1, 63)
   rusty_sword = Weapon.new('rusty sword', 'd5', 1, 25)
   mace = Weapon.new('mace', 'd4', 1, 10)
+  #weapons initialize order is -- name, hitdie, number_rolls, price
   
   loop do
     puts "You enter the town. Where would you like to go?"
@@ -80,7 +81,19 @@ def gototown1(hero)
             end
           end
       when 'gamble'
-        gambler
+        puts "You see a gambler who is as handsome as a beautiful Bahranian woman."
+        gets.chomp
+        puts 'Gambler - "Hey man would you like to gamble? I mean... I am really lonely man and I relly miss hanging out with you!"'
+        answer = gets.chomp
+        if answer == 'yes' then
+          puts ' Gambler - "Awesome man you are a true friend man... did I ever tell you how muhc you remind me of a great warrior tribe meaaaaan!."'
+          gets.chomp
+          puts "How much would you like to bet?"
+          bet = gets.chomp
+            if hero.gold > bet
+              hero.gold -= bet
+            end
+        end
       when 'leave'
         puts "You wave goodbye to the villagers and once again enter the wilds."
         return(hero)
