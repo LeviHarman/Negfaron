@@ -43,50 +43,45 @@ end
 
 #rolls for hero stats
 loop do
-  @str = newstatroll
-  @dex = newstatroll
-  @con = newstatroll
-  @inte = newstatroll
-  @wis = newstatroll
-  @cha = newstatroll
+  hero.str = hero.newstatroll
+  hero.dex = hero.newstatroll
+  hero.con = hero.newstatroll
+  hero.inte = hero.newstatroll
+  hero.wis = hero.newstatroll
+  hero.cha = hero.newstatroll
   
   puts "Your stats are:"
-  puts "Strength = #{@str} - Important for physical damage, and melee accuracy."
-  puts "Dexterity = #{@dex} - Important for ranged accuracy, and armor class."
-  puts "Constitution = #{@con} - Important for hit points, and poison saves."
-  puts "Intelligence = #{@inte} - Important for magic."
-  puts "Wisdom = #{@wis} - Important for healing."
-  puts "Charisma = #{@cha} - Important for prices and dealing with people."
-  puts 
-  puts "Your modifiers are:"
-  puts "Strength modifier = #{modifier(@str)} - Modifies damage"
-  puts "Dexterity modifier = #{modifier(@dex)} - Modifies ranged accuracy"
-  puts "Constitution modifier = #{modifier(@con)} - Modifies hit points"
-  puts "Intelligence modifier = #{modifier(@inte)} - Modifies mana and number of spells"
-  puts "Wisdom modifier = #{modifier(@wis)} - Modifies healing"
-  puts "Charisma modifier = #{modifier(@cha)} - Modifies social things."
-  print
-  puts "Would you like to roll again?"
+  puts "Strength:     #{hero.str}, modifier: #{hero.modifier(hero.str)} - Physical damage, and melee accuracy."
+  puts "Dexterity:    #{hero.dex}, modifier: #{hero.modifier(hero.dex)} - Ranged accuracy, and armor class."
+  puts "Constitution: #{hero.con}, modifier: #{hero.modifier(hero.con)} - Hit points, and poison saves."
+  puts "Intelligence: #{hero.inte}, modifier: #{hero.modifier(hero.inte)} - Magic."
+  puts "Wisdom:       #{hero.wis}, modifier: #{hero.modifier(hero.wis)} - Healing."
+  puts "Charisma:     #{hero.cha}, modifier: #{hero.modifier(hero.cha)} - Prices and dealing with people."
+  puts
+  puts "Type keep  to keep the role. Press Enter to reroll."
 
   reroll = gets.chomp
   
-  if reroll == 'no'
-      @hp = 10 + modifier(@con)
-      @maxhp = 10 + modifier(@con)
-      puts "Your hp is #{@maxhp}"
-      break
+  if reroll == 'keep'
+    hero.hp = 10 + hero.modifier(hero.con)
+    hero.maxhp = 10 + hero.modifier(hero.con)
+    puts "Your hp is #{hero.maxhp}"
+    break
   end
   
 end
 
 #choose race
 loop do
+
   puts "Which race would you like to choose?"
-  puts "Human - No bonus or penalty. The well rounded race."
-  puts "Dwarf - Bonus Constitution, and Penalty to Charisma. Short sturdy Dwarves are tough but they are hard to get along with."
-  puts "Elf - Bonus Dexterity, and penalty to Constitution. The frail woodland elves prefer the bow."
+  puts "Human - +0   , +0    The well rounded race."
+  puts "Dwarf - +2 Con, -2 Cha A short and sturdy race."
+  puts "Elf   - +2 Dex, -2 Con A frail race. "
+  
   raceselection = gets.chomp
   raceselection = raceselection.downcase
+  
   case raceselection
   when 'human'
     hero.creaturetype = "human"
@@ -104,6 +99,7 @@ loop do
   else
     puts "Please enter a valid Race."
   end
+  
 end
 
 #play game until hero dies
