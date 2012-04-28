@@ -20,14 +20,6 @@ class Creature
   def alive?
     @hp > 0
   end
-  
-  def rename(newname)
-    @name = newname #method to change name of a creature.
-  end
-  
-  def new_creaturetype(newtype)
-    @creaturetype = newtype
-  end
 end
 
 class Monster < Creature
