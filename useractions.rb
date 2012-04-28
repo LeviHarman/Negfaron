@@ -1,4 +1,4 @@
-def useractions(hero)
+def useractions(hero, monster)
   puts "What action would you like to perform?"
   action = gets.chomp
   case action
@@ -6,7 +6,7 @@ def useractions(hero)
       puts "You are walking man"
       p hero
     when 'town'
-      gototown(hero)
+      gototown1(hero)
     when 'heal'
       hero.heal
       puts "You chant to your god and your wounds begin to heal"
@@ -14,9 +14,9 @@ def useractions(hero)
     when 'end'
       Process.exit 
     when 'wander'
-      wander(hero)
+      wander(hero, monster)
     when 'help'
       puts "COMMANDS - help, walk, town, end, wander, heal"
   end
-  return(hero)
+  return hero
 end

@@ -1,12 +1,31 @@
 class Hero < Creature
-  attr_accessor :weapon, :gold, :experience, :level
+  attr_accessor :weapon, :gold, :experience, :level, :hp, :exp_to_next_level, :exp_this_level
   
-  def initialize(name, creaturetype, str, dex, con, inte, wis, cha, hp, level, maxhp, xpv, str_modifier, dex_modifier, con_modifier, inte_modifier, wis_modifier, cha_modifier, damagedie, weapon, gold, experience)
-    super(name, creaturetype, str, dex, con, inte, wis, cha, hp, maxhp, xpv, str_modifier, dex_modifier, damagedie, con_modifier, inte_modifier, wis_modifier, cha_modifier)
+  def initialize(name, creaturetype, maxhp, hp, damagedie, str, dex, con, inte, wis, cha, level,  weapon, gold, experience, exp_this_level, exp_to_next_level)
+    super(name, creaturetype, maxhp, hp, damagedie)
     @weapon = weapon
     @gold = gold
+    @level = level
+    @str = str
+    @dex = dex
+    @con = con
+    @inte = inte
+    @wis = wis
+    @cha = cha
     @experience = experience
-    @level = :level
+    @exp_to_next_level = exp_to_next_level
+    @exp_this_level = exp_this_level
+  end
+  
+  def alive?
+    @hp > 0
+  end
+  
+  def heal
+    @hp += die(4) + modifier(@inte)
+    if @hp > @maxhp then
+      @hp = @maxhp
+    end
   end
   
   def newstatroll
@@ -30,7 +49,7 @@ class Hero < Creature
       when 'd8'
         hitdieroll = die(8)
     end
-    totaldamage = @str_modifier + hitdieroll
+    totaldamage = modifier(@str) + hitdieroll
     return totaldamage
   end
   
@@ -51,21 +70,15 @@ class Hero < Creature
     end
   end
   
-  def getstatmodifier
-    @cha_modifier = modifier(@cha)
-    @wis_modifier = modifier(@wis)
-    @inte_modifier = modifier(@inte)
-    @con_modifier = modifier(@con)
-    @dex_modifier = modifier(@dex)
-    @str_modifier = modifier(@str)
-  end
-  
   def set_name( aName )
     @name = aName
   end
   
   def levelhero
-    addedhp = die(10) + @con_modifier
+    @exp_this_level = 0
+    @exp_to_next_level = (@exp_to_next_level * 1.33)
+    addedhp = die(10) + modifier(@con)
+    @level = @level + 1
     @maxhp +=  addedhp
   end
   
@@ -84,6 +97,34 @@ class Hero < Creature
     end
   end
   
+    def modifier(base_stat)
+    if base_stat == 1
+      return -5
+    elsif base_stat == 2 or  base_stat == 3
+      return -4
+    elsif base_stat == 4 or base_stat == 5
+      return -3
+    elsif base_stat == 6 or base_stat == 7
+      return -2
+    elsif base_stat == 8 or base_stat == 9
+      return -1
+    elsif base_stat == 10 or base_stat == 11
+      return 0
+    elsif base_stat == 12 or base_stat == 13
+      return +1
+    elsif base_stat == 14 or base_stat == 15
+      return +2
+    elsif base_stat == 16 or base_stat == 17
+      return +3
+    elsif base_stat == 18 or base_stat == 19
+      return +4
+    elsif base_stat == 20
+        return +5
+    else
+      print "modifier error"
+    end
+  end
+  
   def rollforherostats
   rollagain = 0
     while rollagain == 0
@@ -93,7 +134,6 @@ class Hero < Creature
       @inte = newstatroll
       @wis = newstatroll
       @cha = newstatroll
-      getstatmodifier
       
       puts "Your stats are:"
       puts "Strength = #{@str} - Important for physical damage, and melee accuracy."
@@ -104,12 +144,12 @@ class Hero < Creature
       puts "Charisma = #{@cha} - Important for prices and dealing with people."
       puts 
       puts "Your modifiers are:"
-      puts "Strength modifier = #{@str_modifier} - Modifies damage"
-      puts "Dexterity modifier = #{@dex_modifier} - Modifies ranged accuracy"
-      puts "Constitution modifier = #{@con_modifier} - Modifies hit points"
-      puts "Intelligence modifier = #{@inte_modifier} - Modifies mana and number of spells"
-      puts "Wisdom modifier = #{@wis_modifier} - Modifies healing"
-      puts "Charisma modifier = #{@cha_modifier} - Modifies social things."
+      puts "Strength modifier = #{modifier(@str)} - Modifies damage"
+      puts "Dexterity modifier = #{modifier(@dex)} - Modifies ranged accuracy"
+      puts "Constitution modifier = #{modifier(@con)} - Modifies hit points"
+      puts "Intelligence modifier = #{modifier(@inte)} - Modifies mana and number of spells"
+      puts "Wisdom modifier = #{modifier(@wis)} - Modifies healing"
+      puts "Charisma modifier = #{modifier(@cha)} - Modifies social things."
       print
       puts "Would you like to roll again?"
       reroll = gets.chomp
@@ -117,13 +157,14 @@ class Hero < Creature
         when 'yes' #reroll
           rollagain = 0
         when 'no' #keep current rolls
-          @hp = 10 + @con_modifier
-          @maxhp = 10 + @con_modifier
+          @hp = 10 + modifier(@con)
+          @maxhp = 10 + modifier(@con)
           puts "Your hp is #{@maxhp}"
           rollagain = 1
       end
     end
   end
+  
   def pickarace
     while @creaturetype == 1
       puts "Which race would you like to choose?"
@@ -132,7 +173,6 @@ class Hero < Creature
       puts "Elf - Bonus Dexterity, and penalty to Constitution. The frail woodland elves prefer the bow."
       raceselection = gets.chomp
       race(raceselection.downcase)
-      getstatmodifier
     end
   end
 end
