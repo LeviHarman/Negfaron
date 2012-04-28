@@ -10,7 +10,6 @@ end
 
 class Creature
   attr_accessor :name, :creaturetype, :hp, :maxhp, :damagedie
-  
   def initialize(name, creaturetype, maxhp, hp, damagedie)
     @name = name
     @creaturetype = creaturetype
@@ -19,7 +18,7 @@ class Creature
   end
   
   def alive?
-    @hp > 0 #checks if creature is alive.
+    @hp > 0
   end
   
   def damagecalculator
@@ -71,33 +70,13 @@ class Hero < Creature
     end
   end
   
-  def newstatroll
-    statroll = Array.new(4){die(6)} #rolls 4 virtual d6.
-    statrolls = statroll[0]+statroll[1]+statroll[2]+statroll[3]-statroll.min #adds the three highest rolls and it equals the str etc. Repeated for all 6 stats.
-    return statrolls
-  end
-  
   def modifier(base_stat) #Dungeons and Dragons type modifier system
     base_stat = (base_stat / 2) - 5
     return base_stat
   end
   
   def herodamage
-    case @weapon.hitdie
-      when 'd2'
-        hitdieroll = die(2)
-      when 'd3'
-        hitdieroll = die(3)
-      when 'd4'
-        hitdieroll = die(4)
-      when 'd5'
-        hitdieroll = die(5)
-      when 'd6'
-        hitdieroll = die(6)
-      when 'd8'
-        hitdieroll = die(8)
-    end
-    totaldamage = modifier(@str) + hitdieroll
+    totaldamage = modifier(@str) + die(@weapon.hitdie)
     return totaldamage
   end
   
@@ -109,7 +88,4 @@ class Hero < Creature
     @maxhp +=  addedhp
   end
   
-  def rollforherostats
-
-  end
 end

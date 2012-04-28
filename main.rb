@@ -20,10 +20,10 @@ puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 gets.chomp
 
 #weapons initialize order is -- name, hitdie, number_rolls, price
-fist = Weapon.new('fist', 'd3', 1, 0)
+fist = Weapon.new('fist', 3, 1, 0)
 
 # heros initialize order is -- name, creaturetype, maxhp, hp, damagedie, str, dex, con, inte, wis, cha, level,  weapon, gold, experience, exp_this_level, exp_to_next_level
-hero = Hero.new('Tim', nil, 4, 4, 'd1', 1, 1, 1, 1, 1, 1, 1, fist, 10_000, 0, 0, 1_000)
+hero = Hero.new('Tim', nil, 4, 4, 1, 1, 1, 1, 1, 1, 1, 1, fist, 10_000, 0, 0, 1_000)
 
 # monsters initialize order is --- name, creaturetype, maxhp, hp, damagedie, xpv
 monster = Monster.new(1, 2, 3, 4, 5, 6)
@@ -43,12 +43,12 @@ end
 
 #rolls for hero stats
 loop do
-  hero.str = hero.newstatroll
-  hero.dex = hero.newstatroll
-  hero.con = hero.newstatroll
-  hero.inte = hero.newstatroll
-  hero.wis = hero.newstatroll
-  hero.cha = hero.newstatroll
+  hero.str = newstatroll
+  hero.dex = newstatroll
+  hero.con = newstatroll
+  hero.inte = newstatroll
+  hero.wis = newstatroll
+  hero.cha = newstatroll
   
   puts "Your stats are:"
   puts "Strength:     #{hero.str}, modifier: #{hero.modifier(hero.str)} - Physical damage, and melee accuracy."

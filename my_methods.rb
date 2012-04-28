@@ -1,5 +1,12 @@
+def newstatroll
+  statroll = Array.new(4){die(6)} #rolls 4 virtual d6.
+  statrolls = statroll[0]+statroll[1]+statroll[2]+statroll[3]-statroll.min #adds the three highest rolls and it equals the str etc. Repeated for all 6 stats.
+  return statrolls
+end
+
+#commands
 def useractions(hero, monster)
-  puts "What action would you like to perform?"
+  puts "What shall you do next?"
   action = gets.chomp
   case action
     when 'walk'

@@ -1,9 +1,9 @@
 def gototown(hero)
 
-  fine_sword = Weapon.new('fine sword', 'd8', 1, 250)
-  sword = Weapon.new('sword', 'd6', 1, 63)
-  rusty_sword = Weapon.new('rusty sword', 'd5', 1, 25)
-  mace = Weapon.new('mace', 'd4', 1, 10)
+  fine_sword = Weapon.new('fine sword', 8, 1, 250)
+  sword = Weapon.new('sword', 6, 1, 63)
+  rusty_sword = Weapon.new('rusty sword', 5, 1, 25)
+  mace = Weapon.new('mace', 4, 1, 10)
   #weapons initialize order is -- name, hitdie, number_rolls, price
   
   loop do
