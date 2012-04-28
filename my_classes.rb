@@ -136,30 +136,9 @@ class Hero < Creature
     end
   end
   
-    def modifier(base_stat)
-    if base_stat == 1
-      return -5
-    elsif base_stat == 2 or  base_stat == 3
-      return -4
-    elsif base_stat == 4 or base_stat == 5
-      return -3
-    elsif base_stat == 6 or base_stat == 7
-      return -2
-    elsif base_stat == 8 or base_stat == 9
-      return -1
-    elsif base_stat == 10 or base_stat == 11
-      return 0
-    elsif base_stat == 12 or base_stat == 13
-      return +1
-    elsif base_stat == 14 or base_stat == 15
-      return +2
-    elsif base_stat == 16 or base_stat == 17
-      return +3
-    elsif base_stat == 18 or base_stat == 19
-      return +4
-    elsif base_stat == 20
-        return +5
-    end
+  def modifier(base_stat)
+    base_stat = (base_stat / 2) - 5
+    return base_stat
   end
   
   def rollforherostats
