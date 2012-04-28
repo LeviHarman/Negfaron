@@ -21,11 +21,6 @@ class Creature
     @hp > 0
   end
   
-  def damagecalculator
-    damage = @damagedie
-    return damage
-  end
-  
   def rename(newname)
     @name = newname #method to change name of a creature.
   end
