@@ -69,10 +69,9 @@ class Hero < Creature
   
   def levelhero
     @exp_this_level = 0
-    @exp_to_next_level = (@exp_to_next_level * 1.33)
-    addedhp = die(10) + modifier(@con)
+    @exp_to_next_level = (@exp_to_next_level * 1.34)
+    addedhp = die(4) + die(modifier(@con))
     @level = @level + 1
     @maxhp +=  addedhp
   end
-  
 end

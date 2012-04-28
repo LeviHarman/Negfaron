@@ -36,7 +36,7 @@ end
 #Following regenerate the monsters.
 #Initialize order is --- name, creaturetype, maxhp, hp, damagedie, xpv
 def regeneratekobold(kobold)
-  kobold.rename("Kobold")
+  kobold.name = 'Kobold'
   kobold.creaturetype = 'Kobold'
   kobold.hp = 20
   kobold.maxhp = 20

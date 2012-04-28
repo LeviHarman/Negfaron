@@ -108,4 +108,5 @@ while hero.alive?
 end
 
 #message at death
+puts
 puts "Omae ha mo shindeiru. You are already dead."

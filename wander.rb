@@ -19,17 +19,18 @@ def wander(hero, monster)
     attacking = gets.chomp
     case attacking
       when 'attack'
-        damagedealt = hero.herodamage
-        monster.hp -= damagedealt
-        puts "you charge at #{monster.name} and deal #{damagedealt} damage"
+        monster.hp -= hero.herodamage
+        puts "you charge at #{monster.name} and deal #{hero.herodamage} damage"
           if monster.hp < 0 then
             monster.hp = 0
           end
         puts "#{monster.name} has #{monster.hp} remaining."
         puts "#{monster.name} counterattacks"
         hero.hp -= monster.damagedie
-          if hero.hp < 0 then
+          if hero.hp <= 0 then
             hero.hp = 0
+            puts "#{hero.name} has #{hero.hp} remaining"
+            break
           end
         puts "#{hero.name} has #{hero.hp} remaining"
       when 'escape'
