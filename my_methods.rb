@@ -4,6 +4,21 @@ def newstatroll
   return statrolls
 end
 
+#shop for weapons
+def weaponpurchase(weapon)
+  puts "That will be #{weapon.price} gold. Do you still want to buy it? yes/no"
+  answer = gets.chomp
+  if answer == 'yes' then
+    if hero.gold > weapon.price
+      hero.gold -= weapon.price
+      puts "Here is your fine sword."
+      hero.weapon = weapon
+    else
+      puts "You don't have enough money."
+    end
+  end
+end
+        
 #commands
 def useractions(hero, monster)
   puts "What shall you do next?"

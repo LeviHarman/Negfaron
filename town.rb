@@ -17,56 +17,19 @@ def gototown(hero)
         weaponpurchase = gets.chomp
         weaponpurchase.downcase
         
-        case weaponpurchase
-          when 'fine sword'
-            puts "That will be #{fine_sword.price} gold. Do you still want to buy it? yes/no"
-              answer = gets.chomp
-              if answer == 'yes' then
-                if hero.gold > fine_sword.price
-                  hero.gold -= fine_sword.price
-                  puts "Here is your fine sword."
-                  hero.weapon = fine_sword
-                else
-                  puts "You don't have enough money."
-                end
-              end
-          when 'sword'
-            puts "That will be #{sword.price} gold. Do you still want to buy it? yes/no"
-              answer = gets.chomp
-              if answer == 'yes' then
-                if hero.gold > sword.price
-                  hero.gold -= sword.price
-                  puts "Here is your fine sword."
-                  hero.weapon = sword
-                else
-                  puts "You don't have enough money."
-                end
-              end
-          when 'rusty sword'
-            puts "That will be #{rusty_sword.price} gold. Do you still want to buy it? yes/no"
-              answer = gets.chomp
-              if answer == 'yes' then
-                if hero.gold > rusty_sword.price
-                  hero.gold -= rusty_sword.price
-                  puts "Here is your fine sword."
-                  hero.weapon = rusty_sword
-                else
-                  puts "You don't have enough money."
-                end
-              end
-          when 'mace'
-            puts "That will be #{mace.price} gold. Do you still want to buy it? yes/no"
-              answer = gets.chomp
-              if answer == 'yes' then
-                if hero.gold > mace.price
-                  hero.gold -= mace.price
-                  puts "Here is your fine sword."
-                  hero.weapon = mace
-                else
-                  puts "You don't have enough money."
-                end
-              end
-        end
+
+        
+      case weaponpurchase
+      when 'fine sword'
+        weaponpurchase(fine_sword)
+      when 'sword'
+        weaponpurchase(sword)
+      when 'rusty sword'
+        weaponpurchase(rusty_sword)
+      when 'mace'
+        weaponpurchase(mace)
+      end
+      
       when 'inn'
         puts "As you enter the inn the innkeeper gives a quick look at your dirty clothes."
         puts "If you wanna rest it will be 10 gold, accept or leave! yes/no"
@@ -80,6 +43,7 @@ def gototown(hero)
               puts "You don't have enough money."
             end
           end
+          
       when 'gamble'
         puts "You see a gambler who is as handsome as a beautiful Bahranian woman."
         gets.chomp
@@ -94,10 +58,10 @@ def gototown(hero)
               hero.gold -= bet
             end
         end
+        
       when 'leave'
         puts "You wave goodbye to the villagers and once again enter the wilds."
         return(hero)
-        break
       when 'help'
         puts "COMMANDS - shop, inn, leave, help"
     end

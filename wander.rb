@@ -24,15 +24,15 @@ def wander(hero, monster)
           if monster.hp < 0 then
             monster.hp = 0
           end
-        puts "#{monster.name} has #{monster.hp} remaining."
+        puts "#{monster.name} has #{monster.hp} hp remaining."
         puts "#{monster.name} counterattacks"
         hero.hp -= monster.damagedie
           if hero.hp <= 0 then
             hero.hp = 0
-            puts "#{hero.name} has #{hero.hp} remaining"
+            puts "#{hero.name} has #{hero.hp} hp remaining"
             break
           end
-        puts "#{hero.name} has #{hero.hp} remaining"
+        puts "#{hero.name} has #{hero.hp} hp remaining"
       when 'escape'
         puts "You leave the #{monster.name} in peace"
         break
