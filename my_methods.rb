@@ -5,7 +5,7 @@ def newstatroll
 end
 
 #shop for weapons
-def weaponpurchase(weapon)
+def weaponpurchase(hero, weapon)
   puts "That will be #{weapon.price} gold. Do you still want to buy it? yes/no"
   answer = gets.chomp
   if answer == 'yes' then
@@ -17,6 +17,7 @@ def weaponpurchase(weapon)
       puts "You don't have enough money."
     end
   end
+  return hero
 end
         
 #commands

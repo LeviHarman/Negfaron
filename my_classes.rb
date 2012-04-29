@@ -34,8 +34,8 @@ end
 class Hero < Creature
   attr_accessor :weapon, :gold, :experience, :level, :hp, :exp_to_next_level, :exp_this_level, :str, :dex, :con, :inte, :wis, :cha
   
-  def initialize(name, creaturetype, maxhp, hp, damagedie, str, dex, con, inte, wis, cha, level,  weapon, gold, experience, exp_this_level, exp_to_next_level)
-    super(name, creaturetype, maxhp, hp, damagedie)
+  def initialize(name, creaturetype, maxhp, hp, str, dex, con, inte, wis, cha, level,  weapon, gold, experience, exp_this_level, exp_to_next_level)
+    super(name, creaturetype, maxhp, hp)
     @weapon = weapon
     @gold = gold
     @level = level
@@ -62,7 +62,7 @@ class Hero < Creature
     return base_stat
   end
   
-  def herodamage
+  def damage
     totaldamage = modifier(@str) + die(@weapon.hitdie)
     return totaldamage
   end
