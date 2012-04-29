@@ -46,6 +46,13 @@ def gototown(hero)
           end
         end
           
+    when 'end'
+      puts "Are you sure you want to end Negfaron? 'yes/no'"
+      choice = gets.chomp
+      if choice == 'yes'
+        Process.exit 
+      end
+          
     when 'gamble'
       puts "You see a gambler who is as handsome as a beautiful Bahranian woman."
       gets.chomp
@@ -98,7 +105,7 @@ def gototown(hero)
       hero_stats(hero)
       
     when 'help'
-      puts "COMMANDS - 'shop' 'inn' 'stats' 'gamble' 'leave' 'help'"
+      puts "COMMANDS - 'shop' 'inn' 'stats' 'gamble' 'end' 'leave' 'help'"
     end
   end
 end

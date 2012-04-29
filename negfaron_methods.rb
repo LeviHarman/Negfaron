@@ -33,7 +33,7 @@ def useractions(hero, monster)
       puts hero.hp
       
     when 'end'
-      puts "Are you sure you want to end the program? 'yes/no'"
+      puts "Are you sure you want to end Negfaron? 'yes/no'"
       choice = gets.chomp
       if choice == 'yes'
         Process.exit 
