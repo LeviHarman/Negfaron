@@ -31,7 +31,11 @@ def useractions(hero, monster)
   action = gets.chomp
   case action
     when 'walk'
-      puts "You are walking man"
+      puts
+      puts "monster object"
+      p monster
+      puts
+      puts "hero object"
       p hero
     when 'town'
       gototown(hero)
@@ -44,7 +48,22 @@ def useractions(hero, monster)
     when 'wander'
       wander(hero, monster)
     when 'help'
-      puts "COMMANDS - help, walk, town, end, wander, heal"
+      puts "COMMANDS - help, stats, town, end, wander, heal"
+    when 'stats'
+      puts "Name:           = #{hero.name}"
+      puts "Race:           = #{hero.creaturetype.capitalize}"
+      puts "Strength:       = #{hero.str}, modifier: #{hero.modifier(hero.str)}"
+      puts "Dexterity:      = #{hero.dex}, modifier: #{hero.modifier(hero.dex)}"
+      puts "Constitution:   = #{hero.con}, modifier: #{hero.modifier(hero.con)}"
+      puts "Intelligence:   = #{hero.inte}, modifier: #{hero.modifier(hero.inte)}"
+      puts "Wisdom:         = #{hero.wis}, modifier: #{hero.modifier(hero.wis)}"
+      puts "Charisma:       = #{hero.cha}, modifier: #{hero.modifier(hero.cha)}"
+      puts "Hitpoints:      = #{hero.hp}/#{hero.maxhp}"
+      puts "Gold:           = #{hero.gold}"
+      puts "Weapon:         = #{hero.weapon.name.capitalize}"
+      puts "Total Xp:       = #{hero.experience}"
+      puts "XP this lvl:    = #{hero.exp_this_level}"
+      puts "XP to next lvl: = #{hero.exp_to_next_level}"
   end
   return hero
 end
