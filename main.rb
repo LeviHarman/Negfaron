@@ -19,8 +19,8 @@ puts "                                                         @
 puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
 gets.chomp
 
-#weapons initialize order is -- name, hitdie, number_rolls, price
-fist = Weapon.new('fist', 3, 1, 0)
+#weapons initialize order is -- name, hitdie, number_rolls, price, modifier
+fist = Weapon.new('fist', 3, 1, 0, 0)
 
 # heros initialize order is -- name, creaturetype, maxhp, hp, str, dex, con, inte, wis, cha, level,  weapon, gold, experience, exp_this_level, exp_to_next_level
 hero = Hero.new(nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 1, fist, 35, 0, 0, 1_000)
