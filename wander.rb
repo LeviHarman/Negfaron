@@ -19,8 +19,8 @@ def wander(hero, monster)
     attacking = gets.chomp
     case attacking
       when 'attack'
-        monster.hp -= hero.herodamage
-        puts "you charge at #{monster.name} and deal #{hero.herodamage} damage"
+        monster.hp -= hero.damage
+        puts "you charge at #{monster.name} and deal #{hero.damage} damage"
           if monster.hp < 0 then
             monster.hp = 0
           end

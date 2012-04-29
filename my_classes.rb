@@ -9,12 +9,11 @@ class Weapon
 end
 
 class Creature
-  attr_accessor :name, :creaturetype, :hp, :maxhp, :damagedie
-  def initialize(name, creaturetype, maxhp, hp, damagedie)
+  attr_accessor :name, :creaturetype, :hp, :maxhp
+  def initialize(name, creaturetype, maxhp, hp)
     @name = name
     @creaturetype = creaturetype
     @hp = hp
-    @damagedie = damagedie
   end
   
   def alive?
@@ -26,8 +25,9 @@ class Monster < Creature
   attr_accessor :xpv, :name, :creaturetype, :hp, :maxhp, :damagedie
   
   def initialize(name, creaturetype, maxhp, hp, damagedie, xpv)
-     super(name, creaturetype, maxhp, hp, damagedie)
+     super(name, creaturetype, maxhp, hp)
     @xpv = xpv # experience value
+    @damagedie = damagedie
   end
 end
 
