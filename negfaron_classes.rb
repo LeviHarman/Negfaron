@@ -69,7 +69,7 @@ class Hero < Creature
     return totaldamage
   end
   
-  def levelhero
+  def levelUp
     @exp_this_level = 0
     @exp_to_next_level = (@exp_to_next_level * 1.34)
     addedhp = die(4) + die(modifier(@con))

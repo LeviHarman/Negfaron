@@ -56,7 +56,7 @@ def wander(hero, monster)
       hero.levelhero
       
       puts "######################################"
-      puts "Congratulations you have achieved level #{hero.level}."
+      puts "Congratulations you have achieved level #{hero.levelUp}."
       puts "Your max hp is now #{hero.maxhp} hp "
       puts "######################################"
     end
