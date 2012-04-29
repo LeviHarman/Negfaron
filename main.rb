@@ -75,7 +75,7 @@ end
 loop do
 
   puts "Which race would you like to choose?"
-  puts "Human - +0    , +0    The well rounded race."
+  puts "Human - +0    , +0     The well rounded race."
   puts "Dwarf - +2 Con, -2 Cha A short and sturdy race."
   puts "Elf   - +2 Dex, -2 Con A frail race. "
   

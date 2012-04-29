@@ -36,6 +36,9 @@ def useractions(hero, monster)
       puts "COMMANDS - help, stats, town, end, wander, heal"
     when 'stats'
       hero_stats(hero)
+    else
+      puts
+      puts "Type 'help' for list of commands"
   end
   return hero
 end
@@ -71,9 +74,6 @@ def hero_stats(hero)
   puts "Total Xp:       = #{hero.experience}"
   puts "XP this lvl:    = #{hero.exp_this_level}"
   puts "XP to next lvl: = #{hero.exp_to_next_level}"
-else
-  puts
-  puts "Type 'help' for list of commands"
 end
 
 #Following regenerate the monsters.

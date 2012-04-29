@@ -94,8 +94,10 @@ def gototown(hero)
       puts "You wave goodbye to the villagers and once again enter the wilds."
       return(hero)
       
+    when 'stats'
+      
     when 'help'
-      puts "COMMANDS - 'shop' 'inn' 'gamble' 'leave' 'help'"
+      puts "COMMANDS - 'shop' 'inn' 'stats' 'gamble' 'leave' 'help'"
     end
   end
 end
