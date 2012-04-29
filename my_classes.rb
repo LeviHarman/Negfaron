@@ -22,12 +22,13 @@ class Creature
 end
 
 class Monster < Creature
-  attr_accessor :xpv, :name, :creaturetype, :hp, :maxhp, :damagedie
+  attr_accessor :xpv, :name, :creaturetype, :hp, :maxhp, :damagedie, :goldv
   
-  def initialize(name, creaturetype, maxhp, hp, damagedie, xpv)
+  def initialize(name, creaturetype, maxhp, hp, damagedie, xpv, goldv)
      super(name, creaturetype, maxhp, hp)
     @xpv = xpv # experience value
     @damagedie = damagedie
+    @goldv = goldv # gold dropped when killed
   end
 end
 
