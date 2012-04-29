@@ -41,10 +41,16 @@ def wander(hero, monster)
   
   if monster.hp <= 0
     puts "You slaughter #{monster.name}"
+    gets 
+    puts "You have #{hero.hp}/#{hero.maxhp} hitpoints left."
+    gets
+    hero.gold += monster.goldv
+    puts "You found #{monster.goldv} gold on the #{monster.name.capitalize}'s corpse."
+    gets
     hero.experience += monster.xpv
     hero.exp_this_level += monster.xpv
     puts "You gain #{monster.xpv} experience. Your total experience is: #{hero.experience}"
-    puts "You have #{hero.hp}/#{hero.maxhp} left."
+
     
     if hero.exp_this_level >= hero.exp_to_next_level
       hero.levelhero
