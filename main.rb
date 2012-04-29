@@ -26,7 +26,7 @@ fist = Weapon.new('fist', 3, 1, 0)
 hero = Hero.new(nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 1, fist, 35, 0, 0, 1_000)
 
 # monsters initialize order is --- name, creaturetype, maxhp, hp, damagedie, xpv
-monster = Monster.new(nil, nil, nil, nil, nil, nil)
+monster = Monster.new(nil, nil, nil, nil, nil, nil, nil)
 
 #select heros name
 loop do
