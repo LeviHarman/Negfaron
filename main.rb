@@ -1,5 +1,5 @@
-require './my_methods.rb'
-require './my_classes.rb'
+require './negfaron_methods.rb'
+require './negfaron_classes.rb'
 require './town.rb'
 require './wander.rb'
 
