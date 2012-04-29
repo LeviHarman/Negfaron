@@ -4,6 +4,11 @@ def newstatroll
   return statrolls
 end
 
+def die(a_die) #rolls a die. Number of sides depend on the value chosen by program.
+  roll = rand(a_die) + 1
+  return roll
+end
+
 #shop for weapons
 def weaponpurchase(hero, weapon)
   puts "That will be #{weapon.price} gold. Do you still want to buy it? yes/no"
@@ -42,11 +47,6 @@ def useractions(hero, monster)
       puts "COMMANDS - help, walk, town, end, wander, heal"
   end
   return hero
-end
-
-def die(a_die) #rolls a die. Number of sides depend on the value chosen by program.
-  roll = rand(a_die) + 1
-  return roll
 end
 
 #Following regenerate the monsters.
