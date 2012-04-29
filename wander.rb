@@ -27,7 +27,7 @@ def wander(hero, monster)
         puts "#{monster.name} has #{monster.hp} hp remaining."
         puts "#{monster.name} counterattacks"
         hero.hp -= monster.damagedie
-          if hero.hp <= 0 then
+          if hero.hp < 0 then
             hero.hp = 0
             puts "#{hero.name} has #{hero.hp} hp remaining"
             break
