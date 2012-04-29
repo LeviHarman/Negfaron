@@ -1,5 +1,15 @@
-This is an rpg
-The name is Negfaron
-The Newest version is version 7
+NEGFARON
+#####################
+Created in ruby 1.9.3
+
+* Uses some Dungeons and Dragons rules. 
+* Selectable races.
+* Quick stat roller.
+* Leveling system.
+* Stat modifiers effect gameplay.
+* Town
+* Shop
+* Gamble
+* Weapons
 
 For help type 'Help'

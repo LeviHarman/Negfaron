@@ -58,8 +58,8 @@ class Hero < Creature
   end
   
   def modifier(base_stat) #Dungeons and Dragons type modifier system
-    base_stat = (base_stat / 2) - 5
-    return base_stat
+    modifier = (base_stat / 2) - 5
+    return modifier
   end
   
   def damage
