@@ -1,10 +1,11 @@
 class Weapon
-  attr_reader :name, :hitdie, :number_rolls, :price
-  def initialize(name, hitdie, number_rolls, price)
+  attr_reader :name, :hitdie, :number_rolls, :price, :modifier
+  def initialize(name, hitdie, number_rolls, price, modifier)
     @name = name
     @hitdie = hitdie
     @number_rolls = number_rolls
     @price = price
+    @modifier = modifier
   end
 end
 
