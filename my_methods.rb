@@ -58,6 +58,7 @@ def regeneratekobold(kobold)
   kobold.maxhp = 20
   kobold.xpv = 200
   kobold.damagedie = (die(4)) +1
+  kobold.goldv = 4
   return kobold
 end
 
@@ -68,6 +69,7 @@ def regeneratesnake(snake)
   snake.maxhp = 10
   snake.xpv = 100
   snake.damagedie = die(4)
+  snake.goldv = 2
   return snake
 end
 
@@ -78,6 +80,7 @@ def regeneraterabbit(rabbit)
   rabbit.maxhp = 10
   rabbit.xpv = 75
   rabbit.damagedie = die(2)
+  rabbit.goldv = 1
   return rabbit
 end
 
@@ -88,6 +91,7 @@ def regeneraterat(rat)
   rat.maxhp = 5
   rat.xpv = 50
   rat.damagedie = die(2)
+  rat.goldv = 1
   return rat
 end
 
@@ -98,6 +102,7 @@ def regeneratefrog(frog)
   frog.maxhp = 5
   frog.xpv = 95
   frog.damagedie = die(3)
+  frog.goldv = 4
   return frog
 end
 #end of monster regenerations
