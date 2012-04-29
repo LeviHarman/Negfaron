@@ -11,7 +11,7 @@ def weaponpurchase(hero, weapon)
   if answer == 'yes' then
     if hero.gold > weapon.price
       hero.gold -= weapon.price
-      puts "Here is your fine sword."
+      puts "Here is your #{weapon}."
       hero.weapon = weapon
     else
       puts "You don't have enough money."
