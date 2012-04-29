@@ -95,6 +95,7 @@ def gototown(hero)
       return(hero)
       
     when 'stats'
+      hero_stats(hero)
       
     when 'help'
       puts "COMMANDS - 'shop' 'inn' 'stats' 'gamble' 'leave' 'help'"
