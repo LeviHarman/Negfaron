@@ -1,7 +1,7 @@
 def gototown(hero)
 
   fine_sword = Weapon.new('fine sword', 8, 1, 250, 0)
-  sword = Weapon.new('sword', 6, 1, 63)
+  sword = Weapon.new('sword', 6, 1, 63, 0)
   rusty_sword = Weapon.new('rusty sword', 5, 1, 25, 0)
   mace = Weapon.new('mace', 4, 1, 10, 0)
   #weapons initialize order is -- name, hitdie, number_rolls, price, modifier
