@@ -15,6 +15,7 @@ def useractions(hero, monster)
   case action
     when ''
       puts #new blankline when user hits enter
+      
     when 'walk'
       puts
       puts "monster object"
@@ -22,20 +23,31 @@ def useractions(hero, monster)
       puts
       puts "hero object"
       p hero
+      
     when 'town'
       gototown(hero)
+      
     when 'heal'
       hero.heal
       puts "You chant to your god and your wounds begin to heal"
       puts hero.hp
+      
     when 'end'
-      Process.exit 
+      puts "Are you sure you want to end the program? 'yes/no'"
+      choice = gets.chomp
+      if choice == 'yes'
+        Process.exit 
+      end
+      
     when 'wander'
       wander(hero, monster)
+      
     when 'help'
       puts "COMMANDS - help, stats, town, end, wander, heal"
+      
     when 'stats'
       hero_stats(hero)
+      
     else
       puts
       puts "Type 'help' for list of commands"
