@@ -46,47 +46,47 @@ def gototown(hero)
     when 'gamble'
       puts "You see a gambler who is as handsome as a beautiful Bahranian woman."
       gets.chomp
-      puts 'Gambler - "Hey man would you like to gamble? I mean... I am really lonely man and I relly miss hanging out with you! yes/no"'
+      puts 'Gambler - "Want to gamble?" yes/no'
       answer = gets.chomp
       if answer == 'yes' then
-        puts ' Gambler - "Awesome man you are a true friend man... did I ever tell you how muhc you remind me of a great warrior tribe meaaaaan!."'
-        gets.chomp
         puts "How much would you like to bet?"
         bet = gets.chomp
         bet = bet.to_f
         if hero.gold >= bet
           hero.gold -= bet
-          
-          puts "Heads or tales?"
-          answer = gets.chomp
-          answer = answer.downcase
-          
+
           loop do
-            if answer == 'heads'
+            puts "Heads or tales?"
+            choice = gets.chomp
+            choice = choice.downcase
+            case choice
+            when 'heads'
               answer = 1
               break
-            elsif answer == 'tales'
+            when 'tales'
               answer = 2
               break
             else
-              'Enter heads, or tales.'
+              puts "Choose heads, or tales."
             end
           end
           
           coin = die(2)
           
           if coin == answer
-            winning = bet * 2
+            winnings = bet * 2
             puts "You won! #{winnings} gold."
-            hero.gold += winning
+            hero.gold += winnings
           else
-            "Sorry you lost pal."
+            puts "Sorry you lost pal."
           end
-        end
       else
-        puts "You dont have enough money."
+        puts "You dont have enough to gamble. Come back later!"
       end
-      
+    else
+      'Gambler: "Seeya!"'
+    end
+    
     when 'leave'
       puts "You wave goodbye to the villagers and once again enter the wilds."
       return(hero)
