@@ -6,8 +6,11 @@ def gototown(hero)
   mace = Weapon.new('mace', 4, 1, 10, 0)
   #weapons initialize order is -- name, hitdie, number_rolls, price, modifier
   
+  puts
+  puts "Type 'help' for command list."
+  
   loop do
-    puts "You enter the town. Where would you like to go?"
+    gets
     townaction = gets.chomp
     
     case townaction
@@ -92,7 +95,7 @@ def gototown(hero)
       return(hero)
       
     when 'help'
-      puts "COMMANDS - shop, inn, gamble, leave, help"
+      puts "COMMANDS - 'shop' 'inn' 'gamble' 'leave' 'help'"
     end
   end
 end

@@ -9,27 +9,12 @@ def die(a_die) #rolls a die. Number of sides depend on the value chosen by progr
   return roll
 end
 
-#shop for weapons
-def weaponpurchase(hero, weapon)
-  puts "That will be #{weapon.price} gold. Do you still want to buy it? yes/no"
-  answer = gets.chomp
-  if answer == 'yes' then
-    if hero.gold > weapon.price
-      hero.gold -= weapon.price
-      puts "Here is your #{weapon}."
-      hero.weapon = weapon
-    else
-      puts "You don't have enough money."
-    end
-  end
-  return hero
-end
-        
 #commands
 def useractions(hero, monster)
-  puts "What shall you do next?"
   action = gets.chomp
   case action
+    when ''
+      puts #new blankline when user hits enter
     when 'walk'
       puts
       puts "monster object"
@@ -50,22 +35,45 @@ def useractions(hero, monster)
     when 'help'
       puts "COMMANDS - help, stats, town, end, wander, heal"
     when 'stats'
-      puts "Name:           = #{hero.name}"
-      puts "Race:           = #{hero.creaturetype.capitalize}"
-      puts "Strength:       = #{hero.str}, modifier: #{hero.modifier(hero.str)}"
-      puts "Dexterity:      = #{hero.dex}, modifier: #{hero.modifier(hero.dex)}"
-      puts "Constitution:   = #{hero.con}, modifier: #{hero.modifier(hero.con)}"
-      puts "Intelligence:   = #{hero.inte}, modifier: #{hero.modifier(hero.inte)}"
-      puts "Wisdom:         = #{hero.wis}, modifier: #{hero.modifier(hero.wis)}"
-      puts "Charisma:       = #{hero.cha}, modifier: #{hero.modifier(hero.cha)}"
-      puts "Hitpoints:      = #{hero.hp}/#{hero.maxhp}"
-      puts "Gold:           = #{hero.gold}"
-      puts "Weapon:         = #{hero.weapon.name.capitalize}"
-      puts "Total Xp:       = #{hero.experience}"
-      puts "XP this lvl:    = #{hero.exp_this_level}"
-      puts "XP to next lvl: = #{hero.exp_to_next_level}"
+      hero_stats(hero)
   end
   return hero
+end
+
+#shop for weapons
+def weaponpurchase(hero, weapon)
+  puts "That will be #{weapon.price} gold. Do you still want to buy it? yes/no"
+  answer = gets.chomp
+  if answer == 'yes' then
+    if hero.gold > weapon.price
+      hero.gold -= weapon.price
+      puts "Here is your #{weapon}."
+      hero.weapon = weapon
+    else
+      puts "You don't have enough money."
+    end
+  end
+  return hero
+end
+
+def hero_stats(hero)
+  puts "Name:           = #{hero.name}"
+  puts "Race:           = #{hero.creaturetype.capitalize}"
+  puts "Strength:       = #{hero.str}, modifier: #{hero.modifier(hero.str)}"
+  puts "Dexterity:      = #{hero.dex}, modifier: #{hero.modifier(hero.dex)}"
+  puts "Constitution:   = #{hero.con}, modifier: #{hero.modifier(hero.con)}"
+  puts "Intelligence:   = #{hero.inte}, modifier: #{hero.modifier(hero.inte)}"
+  puts "Wisdom:         = #{hero.wis}, modifier: #{hero.modifier(hero.wis)}"
+  puts "Charisma:       = #{hero.cha}, modifier: #{hero.modifier(hero.cha)}"
+  puts "Hitpoints:      = #{hero.hp}/#{hero.maxhp}"
+  puts "Gold:           = #{hero.gold}"
+  puts "Weapon:         = #{hero.weapon.name.capitalize}"
+  puts "Total Xp:       = #{hero.experience}"
+  puts "XP this lvl:    = #{hero.exp_this_level}"
+  puts "XP to next lvl: = #{hero.exp_to_next_level}"
+else
+  puts
+  puts "Type 'help' for list of commands"
 end
 
 #Following regenerate the monsters.

@@ -32,7 +32,7 @@ monster = Monster.new(nil, nil, nil, nil, nil, nil, nil)
 loop do
   puts "What is thy name?"
   hero.name = gets.chomp
-  puts "Is #{hero.name} the correct name? yes/no"
+  puts "Is #{hero.name} the correct name? 'yes/no'"
   correct = gets.chomp
   if correct == 'yes'
     puts "Welcome #{hero.name}, to the land of Negfaron"
@@ -58,7 +58,7 @@ loop do
   puts "Wisdom:       #{hero.wis}, modifier: #{hero.modifier(hero.wis)} - Healing."
   puts "Charisma:     #{hero.cha}, modifier: #{hero.modifier(hero.cha)} - Prices and dealing with people."
   puts
-  puts "Type keep  to keep the role. Press Enter to reroll."
+  puts "Type 'keep'  to keep the role. 'Press Enter' to reroll."
 
   reroll = gets.chomp
   
@@ -101,7 +101,8 @@ loop do
   end 
 end
 
-puts "Type help for commands list."
+puts
+puts "Type 'help' for commands list."
 puts
 
 #play game until hero dies
