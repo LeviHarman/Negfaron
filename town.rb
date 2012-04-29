@@ -98,5 +98,4 @@ def gototown(hero)
       puts "COMMANDS - 'shop' 'inn' 'gamble' 'leave' 'help'"
     end
   end
-  return hero
 end
