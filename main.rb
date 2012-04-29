@@ -98,9 +98,11 @@ loop do
     break
   else
     puts "Please enter a valid Race."
-  end
-  
+  end 
 end
+
+puts "Type help for commands list."
+puts
 
 #play game until hero dies
 while hero.alive?

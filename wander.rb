@@ -61,5 +61,6 @@ def wander(hero, monster)
       puts "######################################"
     end
   end
+  
   return hero
 end
