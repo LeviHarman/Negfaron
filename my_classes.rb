@@ -65,7 +65,7 @@ class Hero < Creature
   end
   
   def damage
-    totaldamage = modifier(@str) + die(@weapon.hitdie)
+    totaldamage = modifier(@str) + die(@weapon.hitdie) + @weapon.modifier
     return totaldamage
   end
   
