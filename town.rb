@@ -10,7 +10,6 @@ def gototown(hero)
   puts "Type 'help' for command list."
   
   loop do
-    gets
     townaction = gets.chomp
     
     case townaction

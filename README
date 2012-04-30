@@ -2,6 +2,7 @@ NEGFARON
 #####################
 Created in ruby 1.9.3
 
+* Save game system
 * Uses some Dungeons and Dragons rules. 
 * Selectable races.
 * Quick stat roller.

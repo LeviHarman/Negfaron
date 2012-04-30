@@ -9,6 +9,36 @@ def die(a_die) #rolls a die. Number of sides depend on the value chosen by progr
   return roll
 end
 
+def load_game
+  loop do
+    puts "What is the name of your save file?"
+    file_name = gets.chomp
+    
+    if File.exist?("#{file_name}")  
+      fist = Weapon.new('fist', 3, 1, 0, 0)
+      hero = Hero.new(nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 1, fist, 35, 0, 0, 1_000, nil)
+      hero = Marshal.load(File.read("#{file_name}"))
+      start_gameplay(hero)
+    else
+      hero = nil
+    end
+    
+    if hero == nil
+      puts "File doesnt exist"
+      puts "Would you like to retype filename? 'yes/no'"
+      answer = gets.chomp
+        
+      if answer == 'yes'
+      elsif answer == 'no'
+        begin_game
+
+      else
+        puts "Type yes or no."
+      end
+    end
+  end
+end
+
 #commands
 def useractions(hero, monster)
   action = gets.chomp
@@ -23,6 +53,14 @@ def useractions(hero, monster)
       puts
       puts "hero object"
       p hero
+      puts "marshal_array"
+      p hero.stored_data
+       
+    when 'save'
+      puts "What do you want to name the save file?"
+      save = gets.chomp
+      File.open("#{save}", 'w') {|f| f.write(Marshal.dump(hero)) }
+      puts "Game successfully saved!"
       
     when 'town'
       gototown(hero)

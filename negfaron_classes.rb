@@ -34,9 +34,9 @@ class Monster < Creature
 end
 
 class Hero < Creature
-  attr_accessor :weapon, :gold, :experience, :level, :hp, :exp_to_next_level, :exp_this_level, :str, :dex, :con, :inte, :wis, :cha
+  attr_accessor :weapon, :gold, :experience, :level, :hp, :exp_to_next_level, :exp_this_level, :str, :dex, :con, :inte, :wis, :cha, :stored_data
   
-  def initialize(name, creaturetype, maxhp, hp, str, dex, con, inte, wis, cha, level,  weapon, gold, experience, exp_this_level, exp_to_next_level)
+  def initialize(name, creaturetype, maxhp, hp, str, dex, con, inte, wis, cha, level, weapon, gold, experience, exp_this_level, exp_to_next_level, stored_data)
     super(name, creaturetype, maxhp, hp)
     @weapon = weapon
     @gold = gold
@@ -50,6 +50,11 @@ class Hero < Creature
     @experience = experience
     @exp_to_next_level = exp_to_next_level
     @exp_this_level = exp_this_level
+    @stored_data = stored_data
+  end
+  
+  def store_object(store) #for storing some data
+    @store_object = store_object
   end
   
   def heal
