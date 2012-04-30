@@ -9,36 +9,6 @@ def die(a_die) #rolls a die. Number of sides depend on the value chosen by progr
   return roll
 end
 
-def load_game
-  loop do
-    puts "What is the name of your save file?"
-    file_name = gets.chomp
-    
-    if File.exist?("#{file_name}")  
-      fist = Weapon.new('fist', 3, 1, 0, 0)
-      hero = Hero.new(nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 1, fist, 35, 0, 0, 1_000, nil)
-      hero = Marshal.load(File.read("#{file_name}"))
-      start_gameplay(hero)
-    else
-      hero = nil
-    end
-    
-    if hero == nil
-      puts "File doesnt exist"
-      puts "Would you like to retype filename? 'yes/no'"
-      answer = gets.chomp
-        
-      if answer == 'yes'
-      elsif answer == 'no'
-        begin_game
-
-      else
-        puts "Type yes or no."
-      end
-    end
-  end
-end
-
 #commands
 def useractions(hero, monster)
   action = gets.chomp
@@ -124,6 +94,69 @@ def hero_stats(hero)
   puts "Total Xp:       = #{hero.experience}"
   puts "XP this lvl:    = #{hero.exp_this_level}"
   puts "XP to next lvl: = #{hero.exp_to_next_level}"
+end
+
+def begin_game
+  # heros initialize order is -- name, creaturetype, maxhp, hp, str, dex, con, inte, wis, cha, level,  weapon, gold, experience, exp_this_level, exp_to_next_level
+  fist = Weapon.new('fist', 3, 1, 0, 0)
+  hero = Hero.new(nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 1, fist, 35, 0, 0, 1_000)
+
+  loop do
+    puts "For new game type 'new'"
+    puts "To continue a saved game type 'load'"
+    
+    game_choice = gets.chomp
+    game_choice.downcase
+    if game_choice == 'load'
+      load_game(hero)
+    elsif game_choice == 'new'
+      break
+    end
+  end
+end
+
+def load_game(hero)
+  loop do
+    puts "What is the name of your save file?"
+    file_name = gets.chomp
+    
+    if File.exist?("#{file_name}")  
+      fist = Weapon.new('fist', 3, 1, 0, 0)
+      hero = Marshal.load(File.read("#{file_name}"))
+      start_gameplay(hero)
+    else
+      hero = nil
+    end
+    
+    if hero == nil
+      puts "File doesnt exist"
+      puts "Would you like to retype filename? 'yes/no'"
+      answer = gets.chomp
+        
+      if answer == 'yes'
+        puts
+      elsif answer == 'no'
+        break
+      else
+        puts "Type yes or no."
+      end
+    end
+  end
+end
+
+def start_gameplay(hero)
+  monster = Monster.new(nil, nil, nil, nil, nil, nil, nil)
+  puts
+  puts "Type 'help' for commands list."
+  puts
+  
+  while hero.alive?
+    hero = useractions(hero, monster)
+  end
+  
+  #message at death
+  puts
+  puts "Omae ha mo shindeiru. You are already dead."
 end
 
 #Following regenerate the monsters.

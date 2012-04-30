@@ -17,49 +17,12 @@ puts "#     # ######  ####  #      #    # #    #  ####  #    # @"
 puts "                                                         @"
 puts "                                                         @"
 puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@"
-gets.chomp
-
-puts 
-
-# monsters initialize order is --- name, creaturetype, maxhp, hp, damagedie, xpv
-
-
-def begin_game
-  loop do
-    puts "For new game type 'new'"
-    puts "To continue a saved game type 'load'"
-    
-    game_choice = gets.chomp
-    game_choice.downcase
-    if game_choice == 'load'
-      load_game
-    elsif game_choice == 'new'
-      break
-    end
-  end
-end
-
-def start_gameplay(hero)
-  monster = Monster.new(nil, nil, nil, nil, nil, nil, nil)
-  puts
-  puts "Type 'help' for commands list."
-  puts
-  
-  while hero.alive?
-    hero = useractions(hero, monster)
-  end
-  
-  #message at death
-  puts
-  puts "Omae ha mo shindeiru. You are already dead."
-end
+gets
 
 begin_game
 
-# heros initialize order is -- name, creaturetype, maxhp, hp, str, dex, con, inte, wis, cha, level,  weapon, gold, experience, exp_this_level, exp_to_next_level
 fist = Weapon.new('fist', 3, 1, 0, 0)
-hero = Hero.new(nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 1, fist, 35, 0, 0, 1_000, nil)
-marshal_load = nil
+hero = Hero.new(nil, nil, nil, nil, nil, nil, nil, nil, nil, nil, 1, fist, 35, 0, 0, 1_000)
 
 #select heros name
 loop do
@@ -136,4 +99,3 @@ end
 
 #play game until hero dies
 start_gameplay(hero)
-
