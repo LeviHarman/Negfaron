@@ -2,6 +2,7 @@ require './negfaron_methods.rb'
 require './negfaron_classes.rb'
 require './town.rb'
 require './wander.rb'
+$LOAD_PATH.push "./saveGames/"
 
 #ascii art intro
 puts "@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@" 

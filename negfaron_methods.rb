@@ -122,7 +122,7 @@ def load_game(hero)
     
     if File.exist?("#{file_name}")  
       fist = Weapon.new('fist', 3, 1, 0, 0)
-      hero = Marshal.load(File.read("#{file_name}"))
+      hero = Marshal.load(File.read("./saveGames/#{file_name}"))
       start_gameplay(hero)
     else
       hero = nil
